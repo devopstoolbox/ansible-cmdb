@@ -1,0 +1,11 @@
+---
+# Configure ansible-cmdb
+
+- name: service is enabled and started
+  service:
+    name: "{{ item }}"
+    enabled: true
+    state: started
+  become: true
+  loop: "{{ ansible-cmdb_services_enable }}"
+  when: ansible-cmdb_enable_service

@@ -1,0 +1,39 @@
+---
+# install archive to local bin dir
+
+- name: check if binary already installed
+  command: "{{ localbin_dir }}/{{ item.name }}
+    {{ item.version_command | default('--version') }}"
+  changed_when: false
+  ignore_errors: true
+  register: localbin_version_output
+
+- name: unpacking tools preset
+  package:
+    name:
+      - unzip
+      - tar
+      - gzip
+      - bzip2
+    state: present
+  become: true
+
+- name: install if binary not present
+  block:
+    - name: download archive
+      get_url:
+        url: "{{ item.url }}"
+        dest: "/tmp/{{ item.url | basename }}"
+        checksum: "{{ item.checksum | default(omit) }}"
+
+    - name: unarchive
+      unarchive:
+        src: "/tmp/{{ item.url | basename }}"
+        dest: "{{ localbin_dir }}"
+        extra_opts: "{{ item.extra_opts | default(omit) }}"
+        remote_src: true
+      become: true
+      become_user: "{{ localbin_user }}"
+
+  when: "( localbin_version_output is failed )
+    or ( item.version not in localbin_version_output.stdout )"

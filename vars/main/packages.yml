@@ -1,0 +1,33 @@
+---
+# Remove packages: uninstall if found
+_ansible-cmdb_packages_remove:
+  all: []
+  CentOS_7: []
+  RedHat_7: []
+  CentOS_8: []
+  RedHat_8: []
+  Fedora_31: []
+  Debian_10: []
+  Ubuntu_18: []
+
+# Prereq packages: they get installed first
+_ansible-cmdb_packages_prereq:
+  all: []
+  CentOS_7: []
+  RedHat_7: []
+  CentOS_8: []
+  RedHat_8: []
+  Fedora_31: []
+  Debian_10: []
+  Ubuntu_18: []
+
+# Install packages
+_ansible-cmdb_packages_install:
+  all: []
+  CentOS_7: []
+  RedHat_7: []
+  CentOS_8: []
+  RedHat_8: []
+  Fedora_31: []
+  Debian_10: []
+  Ubuntu_18: []

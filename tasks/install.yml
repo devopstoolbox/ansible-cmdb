@@ -1,0 +1,27 @@
+---
+# Install ansible-cmdb packages
+
+- name: unwanted packages are removed
+  package:
+    name: "{{ ansible-cmdb_packages_remove }}"
+    state: absent
+  become: true
+  when: ansible-cmdb_remove_packages
+
+- name: prereq repositories are installed
+  package:
+    name: "{{ ansible-cmdb_packages_repos }}"
+    state: "{{ ansible-cmdb_packages_state }}"
+  become: true
+
+- name: prereq packages are installed
+  package:
+    name: "{{ ansible-cmdb_packages_prereq }}"
+    state: "{{ ansible-cmdb_packages_state }}"
+  become: true
+
+- name: packages are installed
+  package:
+    name: "{{ ansible-cmdb_packages_install }}"
+    state: "{{ ansible-cmdb_packages_state }}"
+  become: true

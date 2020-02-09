@@ -1,0 +1,15 @@
+---
+# handlers file for ansible-cmdb
+
+- name: ansible-cmdb service is restarted
+  service:
+    name: "{{ service_name }}"
+    state: restarted
+    sleep: 5
+  become: true
+
+- name: reload firewalld
+  service:
+    name: firewalld
+    state: reloaded
+  become: true

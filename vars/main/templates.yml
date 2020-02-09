@@ -1,0 +1,13 @@
+---
+# Configuration templates to copy
+_ansible-cmdb_templates_copy:
+  all: []
+    # - src: test.j2
+      # dest: /tmp/test
+  CentOS_7: []
+  RedHat_7: []
+  CentOS_8: []
+  RedHat_8: []
+  Fedora_31: []
+  Debian_10: []
+  Ubuntu_18: []

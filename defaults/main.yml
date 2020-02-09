@@ -1,0 +1,19 @@
+---
+# defaults file for ansible-cmdb
+
+ansible-cmdb_packages_state: present
+ansible-cmdb_remove_packages: true
+ansible-cmdb_enable_service: true
+ansible-cmdb_enable_selinux: true
+ansible-cmdb_copy_templates: true
+ansible-cmdb_firewall_configure: true
+ansible-cmdb_firewall_rules:
+  - service: ssh
+  - port: 3389
+ansible-cmdb_users:
+  - user: devops
+    group: docker
+ansible-cmdb_selinux_booleans:
+  - name: ftp_home_dir
+    state: true
+    persistent: true

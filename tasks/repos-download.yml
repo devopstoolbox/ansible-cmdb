@@ -1,0 +1,25 @@
+---
+# All: download repo file
+
+# Red Hat (add yum key)
+- name: repo file is downloaded to /etc/yum.repos.d
+  block:
+    - name: repo file downloaded to /etc/yum.repos.d
+      get_url:
+        url: "{{ item.url }}"
+        checksum: "{{ item.checksum | default(omit) }}"
+        dest: "{{ item.dest }}"
+        mode: "{{ item.mode | default('0644') }}"
+
+    - name: repo key is installed
+      rpm_key:
+        state: present
+        key: "{{ item.gpgkey }}"
+      when: item|selectattr("gpgkey", "defined")|list|length >0
+  become: true
+  when:
+    - ansible_distribution == "RedHat"
+      or ansible_distribution == "CentOS"
+      or ansible_distribution == "Fedora"
+
+# Debian (add apt key)

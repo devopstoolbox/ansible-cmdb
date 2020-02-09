@@ -1,0 +1,10 @@
+---
+# Template configuration files for ansible-cmdb
+
+- name: template is copied
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  become: true
+  loop: "{{ ansible-cmdb_templates_copy }}"
+  when: ansible-cmdb_copy_templates

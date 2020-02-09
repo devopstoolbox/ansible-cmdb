@@ -1,0 +1,45 @@
+---
+# vars file for packages
+
+# Repo files to create
+_ansible-cmdb_repos_create:
+  all: []
+    # - name:
+      # description:
+      # baseurl:
+      # enabled:
+      # gpgcheck:
+      # gpgkey:
+  CentOS_7: []
+  RedHat_7: []
+  CentOS_8: []
+  RedHat_8: []
+  Fedora_31: []
+  Debian_10: []
+  Ubuntu_18: []
+
+# Repo files to download
+_ansible-cmdb_repos_download:
+  all: []
+  CentOS_7: []
+  RedHat_7: []
+  CentOS_8: []
+  RedHat_8: []
+  Fedora_31: []
+  Debian_10: []
+  Ubuntu_18: []
+
+# Repo RPM packages
+_ansible-cmdb_packages_repos:
+  all: []
+  CentOS_7:
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  RedHat_7:
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  CentOS_8:
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+  RedHat_8:
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+  Fedora31: []
+  Debian_10: []
+  Ubuntu_18: []

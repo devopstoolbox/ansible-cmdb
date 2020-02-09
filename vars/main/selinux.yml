@@ -1,0 +1,11 @@
+---
+# SELinux flags to enable
+_ansible-cmdb_selinux_enable:
+  all: []
+  CentOS_7: []
+  RedHat_7: []
+  CentOS_8: []
+  RedHat_8: []
+  Fedora_31: []
+  Debian_10: []
+  Ubuntu_18: []

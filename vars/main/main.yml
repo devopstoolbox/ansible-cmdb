@@ -1,0 +1,44 @@
+---
+# vars file for packages
+
+# Detected OS
+my_os: "{{ ansible_distribution }}_{{ ansible_distribution_major_version }}"
+
+# Repos create
+ansible-cmdb_repos_create: "{{ _ansible-cmdb_repos_create['all']
+  | union ( _ansible-cmdb_repos_create[my_os]
+  | default([]) ) }}"
+
+# Repos download
+ansible-cmdb_repos_download: "{{ _ansible-cmdb_repos_download['all']
+  | union ( _ansible-cmdb_repos_download[my_os]
+  | default([]) ) }}"
+
+# Templates Copy
+ansible-cmdb_templates_copy: "{{ _ansible-cmdb_templates_copy['all']
+  | union ( _ansible-cmdb_templates_copy[my_os]
+  | default([]) ) }}"
+
+# Services Enable
+ansible-cmdb_services_enable: "{{ _ansible-cmdb_services_enable['all']
+  | union ( _ansible-cmdb_services_enable[my_os]
+  | default([]) ) }}"
+
+# SELinux Enable
+ansible-cmdb_selinux_enable: "{{ _ansible-cmdb_selinux_enable['all']
+  | union ( _ansible-cmdb_selinux_enable[my_os]
+  | default([]) ) }}"
+
+# Packages lists
+ansible-cmdb_packages_remove: "{{ _ansible-cmdb_packages_remove['all']
+  | union ( _ansible-cmdb_packages_remove[my_os]
+  | default([]) ) }}"
+ansible-cmdb_packages_repos: "{{ _ansible-cmdb_packages_repos['all']
+  | union ( _ansible-cmdb_packages_repos[my_os]
+  | default([]) ) }}"
+ansible-cmdb_packages_prereq: "{{ _ansible-cmdb_packages_prereq['all']
+  | union ( _ansible-cmdb_packages_prereq[my_os]
+  | default([]) ) }}"
+ansible-cmdb_packages_install: "{{ _ansible-cmdb_packages_install['all']
+  | union ( _ansible-cmdb_packages_install[my_os]
+  | default([]) ) }}"

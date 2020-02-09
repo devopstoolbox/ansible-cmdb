@@ -1,0 +1,32 @@
+---
+
+- name: firewalld is installed
+  package:
+    name: firewalld
+    state: present
+  become: true
+  tags: notest
+
+- name: firewalld service is active
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+  become: true
+  tags: notest
+
+- name: firewall is configured
+  firewalld:
+    source: "{{ item.source if item.source is defined else omit }}"
+    zone: "{{ item.zone if item.zone is defined else omit }}"
+    permanent: true
+    state: "{{ item.state | default('enabled') }}"
+    service: "{{ item.service if item.service is defined else omit }}"
+    immediate: true
+    port: "{{ (item.port | string + '/' + item.protocol | default('tcp') | lower)
+      if item.port is defined else omit }}"
+  loop: "{{ ansible-cmdb_firewall_rules }}"
+  notify: reload firewalld
+  become: true
+  when: ansible-cmdb_firewall_configure
+  tags: notest
