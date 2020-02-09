@@ -8,10 +8,10 @@ ansible-cmdb: Ansible-cmdb
 Ansible galaxy:
 ---------------
 
-[https://galaxy.ansible.com/devops-toolbox.ansible-cmdb](https://galaxy.ansible.com/devops-toolbox.ansible-cmdb)
+[https://galaxy.ansible.com/devopstoolbox.ansible-cmdb](https://galaxy.ansible.com/devopstoolbox.ansible-cmdb)
 
 ```bash
-ansible-galaxy install devops-toolbox.ansible-cmdb
+ansible-galaxy install devopstoolbox.ansible-cmdb
 ```
 
 Requirements
@@ -60,7 +60,7 @@ Example Playbook
   tasks:
     - name: ansible-cmdb is configured
       import_role:
-        name: devops-toolbox.ansible-cmdb
+        name: devopstoolbox.ansible-cmdb
       vars:
         ansible-cmdb_packages_state: present
         ansible-cmdb_remove_packages: true
@@ -89,4 +89,4 @@ MIT
 Author Information
 ------------------
 
-- [Mihai Criveti](https://www.linkedin.com/in/devops-toolbox.)
+- [Mihai Criveti](https://www.linkedin.com/in/devopstoolbox.)
